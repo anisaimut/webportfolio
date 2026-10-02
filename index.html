@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anisa Nurhasanah</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#ffe5ec;font-family:Poppins,sans-serif;color:#4a2c36;min-height:100vh}
+.ribbon{position:fixed;top:-5%;z-index:99;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+.mac{max-width:1000px;margin:40px auto;background:rgba(255,255,255,.8);backdrop-filter:blur(20px);border-radius:18px;border:1.5px solid #fff;box-shadow:0 30px 80px #ff8fab40;overflow:hidden}
+.head{height:38px;background:linear-gradient(to right,#fff,#ffe5ec);display:flex;align-items:center;gap:7px;padding:0 14px}
+.dot{width:12px;height:12px;border-radius:50%}
+.wrap{display:grid;grid-template-columns:200px 1fr;min-height:520px}
+.side{background:#fff6f8;border-right:1px solid #ffc2d6;padding:16px}
+.item{padding:10px 12px;border-radius:10px;cursor:pointer;display:flex;gap:8px;font-size:13px;margin-bottom:4px}
+.item.active{background:#4a2c36;color:white}
+.cont{padding:26px}
+.page{display:none;animation:pop .4s ease} .page.active{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+h1{font-family:Instrument Serif;font-size:44px;line-height:.9}h1 i{color:#ff8fab}
+.card{background:white;border:1px dashed #ffc2d6;border-radius:12px;padding:12px;margin-top:10px}
+@media(max-width:700px){.wrap{grid-template-columns:1fr}.side{display:flex;overflow:auto;gap:6px}.item{white-space:nowrap}}
+</style>
+</head>
+<body>
+
+<div class="mac">
+<div class="head"><div class="dot" style="background:#ff5f57"></div><div class="dot" style="background:#ffbd2e"></div><div class="dot" style="background:#28ca42"></div><small style="margin-left:10px">coquetteOS — portfolio.finder</small></div>
+<div class="wrap">
+<div class="side">
+<div class="item active" onclick="openPage('beranda',this)">🏠 beranda</div>
+<div class="item" onclick="openPage('riwayat',this)">📜 riwayat</div>
+<div class="item" onclick="openPage('profil',this)">💖 profil</div>
+<div class="item" onclick="openPage('pengalaman',this)">✨ pengalaman</div>
+<div class="item" onclick="openPage('kontak',this)">💌 kontak</div>
+</div>
+<div class="cont">
+<div id="beranda" class="page active"><h1>hi i'm <i>you</i> 🎀<br>coquette dev</h1><p style="margin-top:12px;opacity:.7">Portfolio tema macOS pink soft. Klik menu di samping untuk pindah halaman.</p><div class="card">🎀 PPLG • Frontend • TASIKMALAYA 2026</div></div>
+<div id="riwayat" class="page"><h1>riwayat 📜</h1><div class="card"><b>2026 - Sekarang</b> - SMKN 4 PPLG</div><div class="card"><b>2026</b> - Freelance web & design</div></div>
+<div id="profil" class="page"><h1>profil 💖</h1><p style="margin-top:10px;line-height:1.7;opacity:.8">Aku suka desain manis, detail pita, dan bikin website yang aesthetic tapi tetap profesional. Skill: HTML, CSS, JS, Figma.</p></div>
+<div id="pengalaman" class="page"><h1>pengalaman ✨</h1><div class="card">🌸 Fotopolio Website</div><div class="card">🍰 Landing Toko Kue</div><div class="card">🎀 CoquetteOS v1 & v2</div></div>
+<div id="kontak" class="page"><h1>kontak 💌</h1><input style="width:100%;padding:11px;border:1.5px solid #ffc2d6;border-radius:10px;margin-top:10px" placeholder="Anisa Nurhasanah"><textarea style="width:100%;padding:11px;border:1.5px solid #ffc2d6;border-radius:10px;margin-top:8px" placeholder="i love u..."></textarea><button style="width:100%;padding:11px;border:none;border-radius:10px;background:#4a2c36;color:white;margin-top:8px" onclick="alert('terkirim 🎀')">kirim</button></div>
+</div>
+</div>
+</div>
+
+<script>
+function openPage(id,el){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+document.querySelectorAll('.item').forEach(i=>i.classList.remove('active'));
+el.classList.add('active');
+}
+setInterval(()=>{
+let e=document.createElement('div');e.className='ribbon';e.innerText=['🎀','💖','🌸'][Math.floor(Math.random()*3)];e.style.left=Math.random()*100+'vw';e.style.animationDuration=4+Math.random()*3+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),7000);
+},250);
+</script>
+</body>
+</html>
